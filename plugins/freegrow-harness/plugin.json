@@ -1,0 +1,11 @@
+{
+  "name": "freegrow-harness",
+  "description": "자기 진화형 하네스 프레임워크 - 실수 패턴 자동 감지 및 규칙 생성",
+  "version": "0.1.0",
+  "author": {
+    "name": "Freegrow Enterprise"
+  },
+  "commands": ["./commands/"],
+  "skills": ["./skills/"],
+  "hooks": ["./hooks/"]
+}
