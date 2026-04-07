@@ -7,7 +7,7 @@
   },
   "metadata": {
     "description": "Freegrow 내부 개발자용 Claude Code 플러그인 마켓플레이스",
-    "version": "1.3.0"
+    "version": "1.4.0"
   },
   "plugins": [
     {
@@ -230,7 +230,7 @@
       "name": "freegrow-git",
       "source": "./plugins/freegrow-git",
       "description": "Freegrow 팀 전용 Git 워크플로우 자동화 - 커밋, 브랜치, 이슈, PR 형식 통일",
-      "version": "1.2.0",
+      "version": "1.4.0",
       "license": "PROPRIETARY",
       "keywords": ["git", "workflow", "commit", "pr", "freegrow"],
       "commands": [
@@ -241,6 +241,24 @@
       ],
       "skills": [
         "./skills/freegrow-conventions"
+      ]
+    },
+    {
+      "name": "freegrow-harness",
+      "source": "./plugins/freegrow-harness",
+      "description": "자기 진화형 하네스 프레임워크 - 실수 패턴 자동 감지 및 규칙 생성",
+      "version": "0.1.0",
+      "license": "PROPRIETARY",
+      "keywords": ["harness", "pattern", "auto-detect", "rules", "freegrow"],
+      "commands": [
+        "./commands/setup.md",
+        "./commands/list.md",
+        "./commands/add.md",
+        "./commands/promote.md",
+        "./commands/remove.md"
+      ],
+      "skills": [
+        "./skills/harness-manage"
       ]
     }
   ]

@@ -81,6 +81,7 @@ Freegrow 내부 개발자용 Claude Code 플러그인 마켓플레이스입니�
 | 7 | [embedded-development](#7-embedded-development) | 임베디드, RTOS, ESP32, BLE | 5 | 5 | 5 |
 | 8 | [flutter-development](#8-flutter-development) | Flutter 클린 아키텍처 + Riverpod 3.0 | 1 | 4 | - |
 | 9 | [freegrow-git](#9-freegrow-git) | **Freegrow 전용** Git 워크플로우 자동화 | - | 1 | 3 |
+| 13 | [freegrow-harness](#13-freegrow-harness) | **Freegrow 전용** 자기 진화형 하네스 프레임워크 | 1 | 1 | 5 |
 | 10 | [frontend-mobile-development](#10-frontend-mobile-development) | React, Next.js, React Native | 2 | 4 | 1 |
 | 11 | [git-pr-workflows](#11-git-pr-workflows) | Git 워크플로우, PR 관리 (범용) | 1 | - | 3 |
 | 12 | [multi-platform-apps](#12-multi-platform-apps) | iOS, React Native 크로스플랫폼 | 5 | - | 1 |
@@ -381,6 +382,50 @@ Freegrow 내부 개발자용 Claude Code 플러그인 마켓플레이스입니�
 - 모바일 앱 아키텍트
 
 > **Note**: Flutter 개발은 [flutter-development](#8-flutter-development) 플러그인을 사용하세요.
+
+---
+
+### 13. freegrow-harness
+
+> 출처: **Freegrow 자체 개발** | [📖 상세 문서](./plugins/freegrow-harness/README.md)
+
+**자기 진화형 하네스 프레임워크 - 실수 패턴 자동 감지 및 규칙 생성**
+
+| 구분 | 내용 |
+|------|------|
+| 하네스 엔지니어링 | AI 에이전트의 실수를 줄이는 규칙/가드레일 자동 생성 |
+| 계층 구조 | 공통 → 역할별(backend/frontend/hardware) → 개인 |
+| 역할 감지 | 프로젝트 파일 기반 자동 판별 (하드코딩 없음) |
+| 패턴 감지 | PostToolUse hook으로 실시간 감지, 3회 반복 시 제안 |
+| 스마트 로딩 | 역할 + 30일 사용 여부로 이중 필터링 |
+| 포함 에이전트 | `harness-detector` |
+| Skills | `harness-manage` |
+| Commands | `setup`, `list`, `add`, `promote`, `remove` |
+
+**사용법**
+
+```bash
+# 설치 + 초기 설정 (1번만)
+/plugin install freegrow-harness
+/harness setup
+
+# 이후 평소대로 작업하면 자동으로 패턴 감지 → 하네스 생성
+```
+
+**실전 예시**
+
+```
+같은 실수 3번 반복
+  → ⚡ "이 패턴을 하네스로 등록할까요?" (y/n)
+  → 다음부터 Claude가 알아서 방지
+
+개인 하네스가 유용하면
+  → /harness promote → PR 자동 생성 → 팀 전체 적용
+```
+
+**추천 대상**
+- Freegrow 내부 모든 개발자 (필수 권장)
+- Claude Code를 팀 단위로 사용하는 조직
 
 ---
 
