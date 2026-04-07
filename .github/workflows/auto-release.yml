@@ -17,16 +17,39 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get current version
+      - name: Get version and auto-increment patch
         id: version
         run: |
-          # marketplace.json에서 버전 읽기
-          CURRENT_VERSION=$(cat .claude-plugin/marketplace.json | python3 -c "import sys, json; print(json.load(sys.stdin)['metadata']['version'])")
-          # 현재 시간 (YYMMDDHHmm 형식, KST)
+          # marketplace.json에서 base 버전 읽기 (예: 1.4.0)
+          BASE_VERSION=$(cat .claude-plugin/marketplace.json | python3 -c "import sys, json; print(json.load(sys.stdin)['metadata']['version'])")
+          MAJOR_MINOR=$(echo "$BASE_VERSION" | cut -d. -f1,2)
+
+          # 같은 major.minor의 기존 태그 중 가장 높은 patch 번호 찾기
+          LATEST_PATCH=-1
+          for tag in $(git tag -l "v${MAJOR_MINOR}.*" | sort -V); do
+            # v1.4.0.2604071234 형식에서 patch 추출
+            PATCH=$(echo "$tag" | sed "s/v${MAJOR_MINOR}\.//" | cut -d. -f1)
+            if [ "$PATCH" -gt "$LATEST_PATCH" ] 2>/dev/null; then
+              LATEST_PATCH=$PATCH
+            fi
+          done
+
+          # patch 버전 결정
+          if [ "$LATEST_PATCH" -ge 0 ] 2>/dev/null; then
+            NEW_PATCH=$((LATEST_PATCH + 1))
+          else
+            NEW_PATCH=0
+          fi
+
+          NEW_VERSION="${MAJOR_MINOR}.${NEW_PATCH}"
+
+          # 타임스탬프 (YYMMDDHHmm 형식, KST)
           TIMESTAMP=$(TZ='Asia/Seoul' date +%y%m%d%H%M)
-          TAG_NAME="v${CURRENT_VERSION}.${TIMESTAMP}"
+          TAG_NAME="v${NEW_VERSION}.${TIMESTAMP}"
+
           echo "version=${TAG_NAME}" >> $GITHUB_OUTPUT
-          echo "Current version: ${TAG_NAME}"
+          echo "release_version=${NEW_VERSION}" >> $GITHUB_OUTPUT
+          echo "Version: ${NEW_VERSION}, Tag: ${TAG_NAME}"
 
       - name: Generate release notes
         id: notes
