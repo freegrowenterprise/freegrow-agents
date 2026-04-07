@@ -6,6 +6,5 @@
     "name": "Freegrow Enterprise"
   },
   "commands": ["./commands/"],
-  "skills": ["./skills/"],
-  "hooks": ["./hooks/"]
+  "skills": ["./skills/"]
 }
