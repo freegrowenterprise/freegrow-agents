@@ -16,6 +16,9 @@
 - 프로젝트 루트에 CLAUDE.md를 유지하여 프로젝트별 규칙을 명시해라.
 - README.md에 빌드 및 배포 방법을 반드시 포함해라.
 
+### 플러그인 개발
+- Claude Code plugin.json에 hooks 필드를 넣지 마라. hooks는 plugin.json에서 지원하지 않는 필드이며, hooks/ 디렉토리만 있으면 자동 인식된다.
+
 ## 개인 하네스 연동
 
 이 플러그인은 `~/.claude/harness/personal/` 디렉토리에서 개인 하네스를 자동 로드합니다.
