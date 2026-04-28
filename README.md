@@ -64,7 +64,7 @@ Freegrow 내부 개발자용 Claude Code 플러그인 마켓플레이스입니�
 
 | 출처 | 플러그인 |
 |------|----------|
-| Freegrow 자체 개발 | `embedded-development`, `flutter-development`, `freegrow-git` |
+| Freegrow 자체 개발 | `embedded-development`, `flutter-development`, `freegrow-git` `freegrow-harness` |
 | [wshobson/agents](https://github.com/wshobson/agents) 기반 + 확장 | `multi-platform-apps` |
 | [wshobson/agents](https://github.com/wshobson/agents) 포크 | 나머지 8개 플러그인 |
 
@@ -81,10 +81,10 @@ Freegrow 내부 개발자용 Claude Code 플러그인 마켓플레이스입니�
 | 7 | [embedded-development](#7-embedded-development) | 임베디드, RTOS, ESP32, BLE | 5 | 5 | 5 |
 | 8 | [flutter-development](#8-flutter-development) | Flutter 클린 아키텍처 + Riverpod 3.0 | 1 | 4 | - |
 | 9 | [freegrow-git](#9-freegrow-git) | **Freegrow 전용** Git 워크플로우 자동화 | - | 1 | 3 |
-| 13 | [freegrow-harness](#13-freegrow-harness) | **Freegrow 전용** 자기 진화형 하네스 프레임워크 | 1 | 1 | 5 |
 | 10 | [frontend-mobile-development](#10-frontend-mobile-development) | React, Next.js, React Native | 2 | 4 | 1 |
 | 11 | [git-pr-workflows](#11-git-pr-workflows) | Git 워크플로우, PR 관리 (범용) | 1 | - | 3 |
 | 12 | [multi-platform-apps](#12-multi-platform-apps) | iOS, React Native 크로스플랫폼 | 5 | - | 1 |
+| 13 | [freegrow-harness](#13-freegrow-harness) | **Freegrow 전용** 자기 진화형 하네스 프레임워크 | 1 | 1 | 5 |
 
 ---
 
